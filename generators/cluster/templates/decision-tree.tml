@@ -1,0 +1,12 @@
+import logger from 'logger';
+
+export default function(session) {
+    logger.debug('Build decision tree');
+
+    const { bot } = session;
+
+    return function* () {
+        // Promise should resolve an array of skills/clusters
+        return Promise.resolve(['skill1', 'skill2']);
+    };
+}

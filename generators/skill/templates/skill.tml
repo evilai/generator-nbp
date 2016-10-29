@@ -1,0 +1,17 @@
+import logger from 'logger';
+
+import { CLUSTER_NAME } from '../index';
+
+export const SKILL_NAME = '<%= skillName %>';
+
+export default function* (session) {
+    logger.debug(SKILL_NAME.toUpperCase());
+
+    const { bot, rules } = session;
+
+    // Perform any operations here
+    // use 'yield' for async operations
+    // or return promise in case if you don't want to use generators
+
+    return Promise.resolve(session);
+}

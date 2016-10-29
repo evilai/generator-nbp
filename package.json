@@ -1,0 +1,34 @@
+{
+  "name": "generator-nbp",
+  "version": "0.0.1",
+  "description": "Generator for skills and clusters for Node.js Bot Platform",
+  "main": "generators/app/index.js",
+  "scripts": {},
+  "keywords": [
+    "yeoman-generator",
+    "nodejs-bot-platform",
+    "bot",
+    "ai",
+    "artificial intellegence",
+    "nodejs"
+  ],
+  "author": "Maxim Vetrenko <vetrenko.maxim@gmail.com> (https://github.com/maxmert)",
+  "license": "ISC",
+  "files": [
+    "generators/app",
+    "generators/skill",
+    "generators/cluster"
+  ],
+  "devDependencies": {
+    "eslint": "^3.9.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-evilai": "0.0.1",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  },
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "yeoman-generator": "^0.24.1"
+  }
+}

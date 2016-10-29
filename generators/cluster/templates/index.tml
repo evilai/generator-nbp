@@ -1,0 +1,22 @@
+import logger from 'logger';
+import clusterCreate from 'skills-cluster';
+
+import decisionTreeBuilder from './decision-tree';
+import skills from './skills';
+
+export const CLUSTER_NAME = '<%= clusterName %>';
+
+const cluster = clusterCreate(CLUSTER_NAME);
+
+cluster.plug(skills);
+
+export default function* (session) {
+    logger.debug(`[ ${CLUSTER_NAME.toUpperCase()} ]`);
+
+    return cluster
+        .buildDecisionTree(decisionTreeBuilder(session))
+        .then(tree =>
+            cluster
+                .traverse(tree, session)
+        );
+}

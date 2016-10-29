@@ -1,0 +1,20 @@
+/**
+* DO NOT CHANGE MANUALLY
+* This file generated automatically by yeoman generator-nbp
+* developed to scaffold Skills Clusters and Skills for Node.js Bot Platform.
+*
+* In case if you want to support this file manually, don't use generator for creating skills in this cluster.
+*/
+
+<% skills.forEach(function(skill){ -%>
+import <%- skill %>Skill, { SKILL_NAME as <%- skill.toUpperCase() %>_SKILL_NAME } from './skills/<%- skill %>';
+<% }); -%>
+
+export default [
+<% skills.forEach(function(skill, index){ -%>
+    {
+        name: <%- skill.toUpperCase() %>_SKILL_NAME,
+        lambda: <%- skill %>Skill
+    }<% if (skills.length - 1 > index) { %>,<% } %>
+<% }); -%>
+];
