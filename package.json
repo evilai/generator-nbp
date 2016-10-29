@@ -1,6 +1,6 @@
 {
   "name": "generator-nbp",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Generator for skills and clusters for Node.js Bot Platform",
   "main": "generators/app/index.js",
   "scripts": {},
