@@ -2,6 +2,10 @@ var generator = require('yeoman-generator');
 var path = require('path');
 var fs = require('fs');
 var uniq = require('lodash').uniq;
+var camelCase = require('lodash/camelCase');
+var snakeCase = require('lodash/snakeCase');
+var kebabCase = require('lodash/kebabCase');
+var map = require('lodash/map');
 
 module.exports = generator.Base.extend({
     prompting: function() {
@@ -35,23 +39,31 @@ module.exports = generator.Base.extend({
 
         if (saveSkills) {
             var config = this.config.getAll() || {};
-            skills = config.skills || [];
+            var skills = config.skills || [];
             skills.push(skillName);
             skills = uniq(skills);
+
+            var templateSkills = map(skills, function(skill) {
+                return {
+                    variable: camelCase(skill),
+                    constant: snakeCase(skill).toUpperCase(),
+                    filename: kebabCase(skill)
+                };
+            });
 
             this.config.set('skills', skills);
 
             this.fs.copyTpl(
                 this.templatePath('skills.tml'),
                 this.destinationPath('skills.js'),
-                { skills }
+                { skills: templateSkills }
             );
         }
 
         this.fs.copyTpl(
             this.templatePath('skill.tml'),
-            this.destinationPath(path.join('skills', skillName + '.js')),
-            this.answers
+            this.destinationPath(path.join('skills', kebabCase(skillName) + '.js')),
+            { skillName: camelCase(this.answers.skillName) }
         );
     }
 });

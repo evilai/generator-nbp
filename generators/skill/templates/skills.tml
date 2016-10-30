@@ -7,14 +7,14 @@
 */
 
 <% skills.forEach(function(skill){ -%>
-import <%- skill %>Skill, { SKILL_NAME as <%- skill.toUpperCase() %>_SKILL_NAME } from './skills/<%- skill %>';
+import <%- skill.variable %>Skill, { SKILL_NAME as <%- skill.constant %>_SKILL_NAME } from './skills/<%- skill.filename %>';
 <% }); -%>
 
 export default [
 <% skills.forEach(function(skill, index){ -%>
     {
-        name: <%- skill.toUpperCase() %>_SKILL_NAME,
-        lambda: <%- skill %>Skill
+        name: <%- skill.constant %>_SKILL_NAME,
+        lambda: <%- skill.variable %>Skill
     }<% if (skills.length - 1 > index) { %>,<% } %>
 <% }); -%>
 ];
